@@ -1,11 +1,14 @@
 import express from 'express';
+import cors from 'cors';
 import playbackRouter from './routes/playback';
 import retrievalRouter from './routes/retrieval';
 import authRouter from './routes/auth';
-import { requireLogin } from './utils/login-util';
+import { requireLogin } from './utils/auth-utils';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+
+const PORT = process.env.PORT || 8080;
 
 // parse the req url, change and route
 app.use('/', (req, res, next) => {

@@ -17,7 +17,6 @@ export const requireLogin = async (req: Request, res: Response, next: NextFuncti
             session_id: req.headers["session_id"] as string
         }
     });
-    // validated response
     try {
         const data = await response.json();
         if (dataIsError(data)) return res.json(data);
