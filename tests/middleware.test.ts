@@ -25,7 +25,7 @@ describe("Authentication middleware", () => {
         };
     });
 
-    it("correctly handles when request without headers", async () => {
+    it("correctly handles when request is without headers", async () => {
         await requireLogin(mockRequest as Request, mockResponse as Response, nextFunction);
         expect(mockResponse.json).toBeCalledWith(headerError);
 
@@ -75,8 +75,4 @@ describe("Authentication middleware", () => {
         await requireLogin(mockRequest as Request, mockResponse as Response, nextFunction);
         expect(mockResponse.json).toBeCalledWith(mock_auth_error);
     })
-});
-
-describe("Url routing middleware", () => {
-
 });
