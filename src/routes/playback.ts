@@ -6,7 +6,6 @@ const router = express.Router();
 router.all('/*', async (req, res) => {
     // forward request, aggregate data
     const url = 'http://playback-service:8002/playback' + req.url;
-    console.log('apigw url:', url);
     const response = await fetch(url, {
         method: req.method,
         headers: {

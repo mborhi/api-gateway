@@ -9,8 +9,11 @@ router.all('/login/*', async (req: Request, res: Response) => {
     // handle auth service
     const response = await fetch('http://auth-service:8001/login/');
     // validate
-    res.redirect(response.url);
-    // res.json(data);
+    if (response.ok) {
+        res.redirect(response.url);
+    } else {
+        return res.redirect('http://quick-discover-ui:3000/');
+    }
 });
 
 router.all('/token', async (req: Request, res: Response) => {
